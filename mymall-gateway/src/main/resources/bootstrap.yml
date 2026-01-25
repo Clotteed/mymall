@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: mymall-gateway
+  profiles:
+    active: test
+  cloud:
+    gateway:
+      routes:
+        - id: mymall-coupon-route
+          uri: lb://mymall-coupon
+          predicates:
+            - Path=/mymall-coupon/**
+          # 路径重写（可选，核心！）：去掉路径中的 /mymall-coupon 前缀
+          filters:
+            - RewritePath=/mymall-coupon/(?<segment>.*), /$\{segment}
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+
+server:
+  port: 88
+
+---
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 47.99.65.156:18848
+        file-extension: yaml
+        username: nacos
+        password: nacos@Clotte
+      discovery:
+        server-addr: 47.99.65.156:18848
+        username: nacos
+        password: nacos@Clotte
+
+
+
+

@@ -1,7 +1,13 @@
 package com.clotte.mymall.product.service.impl;
 
+import com.ctc.wstx.util.StringUtil;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -24,6 +30,13 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<CategoryEntity> listWithTree() {
+        List<CategoryEntity> list = this.list();
+        List<CategoryEntity> res = list.stream().filter(i -> i.getParentCid() == 0).collect(Collectors.toList());
+        return res;
     }
 
 }

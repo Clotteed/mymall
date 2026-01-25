@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: mymall-ware
+  profiles:
+    active: test
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+
+server:
+  port: 18085
+
+
+
+---
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 47.99.65.156:18848
+        file-extension: yaml
+        username: nacos
+        password: nacos@Clotte
+      discovery:
+        server-addr: 47.99.65.156:18848
+        username: nacos
+        password: nacos@Clotte
+
+
+
+
