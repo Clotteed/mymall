@@ -104,7 +104,6 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
-
         <!-- 引入链路追踪sleuth -->
         <!--        <dependency>-->
         <!--            <groupId>org.springframework.cloud</groupId>-->

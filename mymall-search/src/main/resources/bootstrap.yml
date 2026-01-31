@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mymall-gateway
+    name: mymall-search
   profiles:
     active: test
 
@@ -11,7 +11,15 @@ mybatis-plus:
       id-type: auto
 
 server:
-  port: 88
+  port: 18084
+
+easy-es:
+  compatible: true
+  enable: true
+  address : 192.168.5.128:9200
+  global-config:
+    process_index_mode: smoothly
+
 
 ---
 spring:
